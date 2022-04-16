@@ -10,7 +10,7 @@ const ProductDetail = (props) => {
   const cartCtx = useContext(CartContext);
   const [productDetail, setProductDetail] = useState({});
   const fillProduct = () => {
-    return props.listProduct.filter((p) => p.category === 3).slice(0, 5);
+    return props.listProduct.filter((p) => p.category === 'dien-thoai').slice(0, 5);
   };
 
   useEffect(() => {
@@ -40,7 +40,6 @@ const ProductDetail = (props) => {
       image: productDetail.image,
     });
   };
-  console.log(productDetail);
   return (
     <div className="container product_detail">
       <PageLoading />

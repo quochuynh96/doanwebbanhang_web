@@ -1,6 +1,9 @@
 import React, { useContext, useRef, useState } from "react";
 import classes from "./Checkout.module.css";
 import emailjs from "emailjs-com";
+import {
+  DeleteOutlined
+} from "@ant-design/icons";
 
 import CartContext from "../../store/cart-context";
 import { CheckCircleOutlined } from "@ant-design/icons";
@@ -15,6 +18,7 @@ const Checkout = (props) => {
     address: true,
     email: props.user.email,
   });
+  const userLocal = JSON.parse(localStorage.getItem("userLogined"));
 
   const nameInputRef = useRef();
   const phoneNumberInputRef = useRef();
@@ -91,6 +95,12 @@ const Checkout = (props) => {
       "user_iacEpezHMPueNSO3W3Ub4"
     );
   };
+  const clearForm = () => {
+    nameInputRef.current.value = '';
+    phoneNumberInputRef.current.value = '';
+    addressInputRef.current.value = '';
+  };
+
   return (
     <>
       <div className={classes.overlay} onClick={props.onClose} />
@@ -104,6 +114,7 @@ const Checkout = (props) => {
                 type="text"
                 className="form-control mt-2"
                 ref={nameInputRef}
+                defaultValue={userLocal.fullName}
               />
               {!formInputValid.name && (
                 <small class="form-text text-muted">
@@ -116,6 +127,7 @@ const Checkout = (props) => {
               <input
                 type="text"
                 className="form-control mt-2"
+                defaultValue={userLocal.phoneNumber}
                 ref={phoneNumberInputRef}
               />
               {!formInputValid.phoneNumber && (
@@ -129,6 +141,7 @@ const Checkout = (props) => {
               <input
                 type="text"
                 className="form-control mt-2"
+                defaultValue={userLocal.address}
                 ref={addressInputRef}
               />
               {!formInputValid.address && (
@@ -137,15 +150,30 @@ const Checkout = (props) => {
                 </small>
               )}
             </div>
-            <div className={classes.btn}>
+            <div className={classes.btn} style={{
+              display: 'flex',
+              justifyContent: 'space-between'
+            }}>
               <button
-                className="btn btn-danger"
-                onClick={props.onClose}
-                type="button"
+                  className="btn btn-danger"
+                  onClick={clearForm}
+                  type="button"
+                  style={{
+                    display: 'flex'
+                  }}
               >
-                Đóng
+                <DeleteOutlined />
               </button>
-              <button className="btn btn-primary">Đặt hàng</button>
+              <div>
+                <button
+                    className="btn btn-danger"
+                    onClick={props.onClose}
+                    type="button"
+                >
+                  Đóng
+                </button>
+                <button className="btn btn-primary">Đặt hàng</button>
+              </div>
             </div>
           </>
         )}
