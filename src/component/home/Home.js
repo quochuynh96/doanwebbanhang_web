@@ -105,13 +105,13 @@ const Home = (props) => {
             <img src={banner2} width="100%" alt="" />
           </div>
         </div>
-        <ListProduct title="Điện thoại" item={fillProduct(1)} />
-        <ListProduct title="PC" item={fillProduct(4)} />
+        <ListProduct title="Điện thoại" item={fillProduct('dien-thoai')} />
+        <ListProduct title="PC" item={fillProduct('laptop-pc-man-hinh')} />
 
         <div className="mt-4 mb-5">
           <img src={itemSlide} width="100%" alt="" />
         </div>
-        <ListProduct title="Phụ kiện" item={fillProduct(9)} />
+        <ListProduct title="Phụ kiện" item={fillProduct('phu-kien')} />
       </div>
     </article>
   );

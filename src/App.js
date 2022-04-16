@@ -80,7 +80,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       const requestUrl =
-        "https://shopping-comuca-default-rtdb.firebaseio.com/database.json";
+        "https://tech-store-44eac-default-rtdb.firebaseio.com/products.json";
       const response = await fetch(requestUrl);
       const responseData = await response.json();
       const data = responseData;
