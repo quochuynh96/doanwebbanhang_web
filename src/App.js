@@ -86,10 +86,9 @@ function App() {
       const data = responseData;
 
       const products = [];
-
       for (const i in data) {
         products.push({
-          id: data[i].id,
+          id: i,
           name: data[i].name,
           price: data[i].price,
           image: data[i].image,
