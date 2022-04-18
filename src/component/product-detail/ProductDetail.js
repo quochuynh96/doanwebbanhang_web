@@ -40,6 +40,33 @@ const ProductDetail = (props) => {
       image: productDetail.image,
     });
   };
+
+  const mappingCategory = (str) => {
+    switch (str) {
+      case 'dien-thoai': {
+        return 'Điện thoại';
+      }
+      case 'phu-kien': {
+        return 'Phụ kiện';
+      }
+      case 'laptop-pc-man-hinh': {
+        return 'Laptop, PC, Màn hình';
+      }
+      case 'may-tinh-bang': {
+        return 'Máy tính bảng';
+      }
+      case 'thiet-bi-am-thanh': {
+        return 'Thiết bị âm thanh';
+      }
+      case 'dong-ho': {
+        return 'Đồng hồ';
+      }
+      default: {
+        return "Khác"
+      }
+    }
+  }
+
   return (
     <div className="container product_detail">
       <PageLoading />
@@ -50,7 +77,7 @@ const ProductDetail = (props) => {
         <div className="col-4 mt-5">
           <p className="title-product">{productDetail.name}</p>
           <p className="category-product mt-4">
-            Danh mục: {productDetail.category}
+            Danh mục: {mappingCategory(productDetail.category)}
           </p>
           <p className="raiting-product mt-4">
             <i className="bi bi-star-fill"></i>
