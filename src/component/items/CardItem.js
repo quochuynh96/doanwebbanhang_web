@@ -6,12 +6,12 @@ const CardItem = (props) => {
   const cartCtx = useContext(CartContext);
 
   const addToCartHandler = () =>{
-   
+
     cartCtx.addItem({
       id:props.id,
       name: props.name,
       amount: 1,
-      price: Number(props.price)-(Number(props.price)*0.2),
+      price: Number(props.price)- ((Number(props.price) * (props.discount / 100))),
       image: props.image
     })
   }
